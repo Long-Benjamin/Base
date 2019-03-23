@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+
+// 获取日期方法
+def releaseTime() {
+    return new Date().format("yyyyMMdd.HHmmss")
+ }
+
+android {
+    signingConfigs {
+        debug {
+            keyAlias 'base'
+            keyPassword '123456'
+            storeFile file('D:/Work/ljt_base.jks')
+            storePassword 'ljt123'
+        }
+        release {
+            keyAlias 'base'
+            keyPassword '123456'
+            storeFile file('D:/Work/ljt_base.jks')
+            storePassword 'ljt123'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.ljt.base"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        android.applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    // 此处指定生成的apk文件名
+                    if (variant.buildType.isDebuggable()) {
+//                        outputFileName = "base_android_debug_v${variant.versionName}_${releaseTime()}.apk"
+                    } else {
+                        outputFileName = "base_android_release_v${variant.versionName}_${releaseTime()}.apk"
+                    }
+                }
+        }
+    }
+    buildTypes {
+        release {
+            // 混淆
+            minifyEnabled true
+            // Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation rootProject.ext.constraintlayout
+    implementation rootProject.ext.recyclerview_v7
+    implementation rootProject.ext.appcompat_v7
+    implementation rootProject.ext.support_v4
+    implementation rootProject.ext.design
+
+    implementation rootProject.ext.rxlifecycle_android_lifecycle
+    implementation rootProject.ext.rxlifecycle_kotlin
+    implementation rootProject.ext.rxlifecycle_components
+
+    implementation rootProject.ext.rxpermissions
+    implementation rootProject.ext.rxandroid
+    implementation rootProject.ext.rxkotlin
+    implementation rootProject.ext.rxjava
+
+    implementation rootProject.ext.logging_interceptor
+    implementation rootProject.ext.adapter_rxjava2
+    implementation rootProject.ext.converter_gson
+    implementation rootProject.ext.retrofit
+
+    implementation rootProject.ext.butterknife
+    kapt rootProject.ext.butterknife_compiler
+
+    implementation rootProject.ext.timber
+    implementation rootProject.ext.timber_logger
+
+    implementation rootProject.ext.dagger_android
+    kapt rootProject.ext.dagger_compiler
+
+    implementation rootProject.ext.glide
+    kapt rootProject.ext.glide_compiler
+
+    implementation rootProject.ext.gson
+
+    implementation rootProject.ext.eventbus
+
+    debugImplementation rootProject.ext.leakcanary_android
+    releaseImplementation rootProject.ext.leakcanary_android_no_op
+
+    //底部导航栏
+    implementation project(':ahbottomnavigation')
+    //贴标签
+    implementation project(':sticker')
+}
