@@ -81,14 +81,12 @@ abstract class BaseFragment: RxFragment() {
         params?.height = getStatusBarHeight()
         mViewStatusBarPlace?.layoutParams = params
 
-
-
         //设置状态栏字体颜色
-//        if (getStatusDarkMode()) {
-//            setDarkMode()
-//        }else{
-//            setLightMode()
-//        }
+        if (getStatusDarkMode()) {
+            setDarkMode()
+        }else{
+            setLightMode()
+        }
 
     }
 
@@ -98,7 +96,7 @@ abstract class BaseFragment: RxFragment() {
     }
 
     open fun getStatusDarkMode(): Boolean {
-        return true
+        return false
     }
 
     open fun getTitleText(): String{

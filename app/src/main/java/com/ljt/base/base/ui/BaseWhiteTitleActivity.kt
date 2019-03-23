@@ -13,6 +13,7 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.ljt.base.R
 import com.ljt.base.commond.Config
+import com.ljt.base.utils.StatusBarUtil
 
 abstract class BaseWhiteTitleActivity: BaseActivity() {
 
@@ -44,9 +45,21 @@ abstract class BaseWhiteTitleActivity: BaseActivity() {
 
         initTitleBar()
         initBackBar()
+
+        //设置状态栏字体颜色
+        var statusBarUtil = StatusBarUtil(this)
+        if (getStatusDarkMode()) {
+            statusBarUtil.setDarkMode()
+        }else{
+            statusBarUtil.setLightMode()
+        }
     }
 
     abstract fun initTitleBar()
+
+    open fun getStatusDarkMode(): Boolean {
+        return true
+    }
 
     /**
      * 必要时可以加一个回调，在子类中处理点击事件

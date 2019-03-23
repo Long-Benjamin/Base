@@ -1,5 +1,6 @@
 package com.ljt.base.base.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -12,6 +13,7 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.ljt.base.R
 import com.ljt.base.commond.Config
+import com.ljt.base.utils.StatusBarUtil
 
 abstract class BaseTitleActivity: BaseActivity() {
 
@@ -38,12 +40,24 @@ abstract class BaseTitleActivity: BaseActivity() {
         titleTv = findViewById(R.id.title_text)
         moreImg = findViewById(R.id.title_more)
 
+        //设置状态栏字体颜色
+        var statusBarUtil = StatusBarUtil(this)
+        if (getStatusDarkMode()) {
+            statusBarUtil.setDarkMode()
+        }else{
+            statusBarUtil.setLightMode()
+        }
+
         initTitleBar()
         initBackBar()
+
     }
 
     abstract fun initTitleBar()
 
+    open fun getStatusDarkMode(): Boolean {
+        return false
+    }
     /**
      * 必要时可以加一个回调，在子类中处理点击事件
      */
