@@ -1,7 +1,7 @@
-package com.ljt.base
+package com.ljt.base.ui
 
 import android.os.Bundle
-import com.ljt.base.base.ui.BaseTitleActivity
+import com.ljt.base.R
 import com.ljt.base.base.ui.BaseWhiteTitleActivity
 
 class MainActivity : BaseWhiteTitleActivity() {

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!--可以在程序中根据抽屉菜单 切换Fragment-->
+    <include layout="@layout/base_activity_container_layout"/>
+
+    <!--左边抽屉菜单-->
+    <RelativeLayout
+        android:id="@+id/menu_layout_left"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="#ffffff">
+
+        <include layout="@layout/menu_left_layout"/>
+
+    </RelativeLayout>
+
+    <!--右边抽屉菜单-->
+    <RelativeLayout
+        android:id="@+id/menu_layout_right"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="#ffffff">
+
+            <include layout="@layout/menu_left_layout"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>
