@@ -19,7 +19,7 @@ import java.io.IOException
 class TokenAuthenticator : Authenticator {
 
     @Throws(IOException::class)
-    override fun authenticate(route: Route, response: Response): Request? {
+    override fun authenticate(route: Route?, response: Response): Request? {
 
         //防止后台一直返回401
         if (++Config.RETRY_401 >= 12) {

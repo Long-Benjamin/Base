@@ -1,1 +1,1 @@
-include ':app', ":ahbottomnavigation", ":sticker"
+include ':app', ':update', ":ahbottomnavigation", ":sticker"

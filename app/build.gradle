@@ -121,4 +121,6 @@ dependencies {
     implementation project(':ahbottomnavigation')
     //贴标签
     implementation project(':sticker')
+    //检测跟新
+    implementation project(':update')
 }
