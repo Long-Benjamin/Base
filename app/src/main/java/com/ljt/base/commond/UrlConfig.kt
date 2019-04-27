@@ -7,14 +7,10 @@ package com.ljt.base.commond
  */
 object UrlConfig {
 
-    val BASE_URL = "http://192.168.51.226:10201/api/"
+    val BASE_URL = "http://191.56.1.116:1201/api/"
 
     val PROTOCOL_URL = "https://www.jianshu.com/"
     val PRIVACY_URL = "https://www.jianshu.com/u/d21e45ccbef7"
 
-    const val CONTRACT_LIST = "mobile/compact/page/info"
-    const val CONTRACT_DETAIL = "mobile/compact/detail"
-    const val SEAL_LIST = "mobile/seal/page/info"
-    const val SIGN_LIST = "mobile/sign/page/info"
 
 }
